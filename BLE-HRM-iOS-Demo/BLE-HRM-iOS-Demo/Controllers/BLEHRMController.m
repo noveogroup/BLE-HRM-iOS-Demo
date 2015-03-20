@@ -55,6 +55,7 @@ static NSString *const bleHRMValueCharacteristicId = @"0x2A37";
             options:nil];
     }
     else {
+        self.heartRate = -1;
         NSLog(@"Central manager state is not 'powered on'...");
     }
 }
@@ -74,6 +75,7 @@ static NSString *const bleHRMValueCharacteristicId = @"0x2A37";
     (CBPeripheral *)peripheral error:(NSError *)error
 {
     NSLog(@"Error while connecting peripheral: %@.", error);
+    self.heartRate = -1;
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
@@ -86,6 +88,7 @@ static NSString *const bleHRMValueCharacteristicId = @"0x2A37";
 {
     if (error) {
         NSLog(@"Error while discovering services: %@.", error);
+        self.heartRate = -1;
         return;
     }
     
@@ -101,6 +104,7 @@ static NSString *const bleHRMValueCharacteristicId = @"0x2A37";
 {
     if (error) {
         NSLog(@"Error while discovering characteristics: %@.", error);
+        self.heartRate = -1;
         return;
     }
     
@@ -116,6 +120,7 @@ static NSString *const bleHRMValueCharacteristicId = @"0x2A37";
 {
     if (error) {
         NSLog(@"Error while updating characteristic value: %@.", error);
+        self.heartRate = -1;
         return;
     }
 
