@@ -8,6 +8,7 @@
 
 
 #import "AppDelegate.h"
+#import "MainVC.h"
 
 
 @interface AppDelegate ()
@@ -18,6 +19,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:
     (NSDictionary *)launchOptions {
+
+    CGRect screenFrame = [UIScreen mainScreen].bounds;
+    self.window = [[UIWindow alloc] initWithFrame:screenFrame];
+
+    MainVC *mainVC = [[MainVC alloc] init];
+    self.window.rootViewController = mainVC;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

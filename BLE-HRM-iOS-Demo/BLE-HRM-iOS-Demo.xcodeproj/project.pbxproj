@@ -12,6 +12,9 @@
 		6E45B53D1ABBD63200F3161F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E45B53C1ABBD63200F3161F /* Images.xcassets */; };
 		6E45B53F1ABBD6CB00F3161F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E45B53E1ABBD6CB00F3161F /* LaunchScreen.xib */; };
 		6E45B5431ABBD6FA00F3161F /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E45B5421ABBD6FA00F3161F /* MainVC.m */; };
+		6E45B5471ABBDE7700F3161F /* BLEHRMController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E45B5461ABBDE7700F3161F /* BLEHRMController.m */; };
+		6E45B54E1ABBE04600F3161F /* KVCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E45B54D1ABBE04600F3161F /* KVCUtils.m */; };
+		6E45B5501ABBE1A500F3161F /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E45B54F1ABBE1A500F3161F /* MainVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,11 @@
 		6E45B53E1ABBD6CB00F3161F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		6E45B5411ABBD6FA00F3161F /* MainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainVC.h; path = ViewControllers/MainVC.h; sourceTree = "<group>"; };
 		6E45B5421ABBD6FA00F3161F /* MainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainVC.m; path = ViewControllers/MainVC.m; sourceTree = "<group>"; };
+		6E45B5451ABBDE7700F3161F /* BLEHRMController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEHRMController.h; sourceTree = "<group>"; };
+		6E45B5461ABBDE7700F3161F /* BLEHRMController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEHRMController.m; sourceTree = "<group>"; };
+		6E45B54C1ABBE04600F3161F /* KVCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVCUtils.h; sourceTree = "<group>"; };
+		6E45B54D1ABBE04600F3161F /* KVCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVCUtils.m; sourceTree = "<group>"; };
+		6E45B54F1ABBE1A500F3161F /* MainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainVC.xib; path = ViewControllers/MainVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +48,7 @@
 		6E45B5091ABBD5A900F3161F = {
 			isa = PBXGroup;
 			children = (
+				6E45B54B1ABBE04600F3161F /* Common */,
 				6E45B5141ABBD5A900F3161F /* BLE-HRM-iOS-Demo */,
 				6E45B5131ABBD5A900F3161F /* Products */,
 			);
@@ -59,6 +68,7 @@
 				6E45B5191ABBD5A900F3161F /* AppDelegate.h */,
 				6E45B51A1ABBD5A900F3161F /* AppDelegate.m */,
 				6E45B53B1ABBD61600F3161F /* Resources */,
+				6E45B5441ABBDE5100F3161F /* Controllers */,
 				6E45B5401ABBD6E400F3161F /* ViewControllers */,
 				6E45B5151ABBD5A900F3161F /* Supporting Files */,
 			);
@@ -88,8 +98,27 @@
 			children = (
 				6E45B5411ABBD6FA00F3161F /* MainVC.h */,
 				6E45B5421ABBD6FA00F3161F /* MainVC.m */,
+				6E45B54F1ABBE1A500F3161F /* MainVC.xib */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6E45B5441ABBDE5100F3161F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6E45B5451ABBDE7700F3161F /* BLEHRMController.h */,
+				6E45B5461ABBDE7700F3161F /* BLEHRMController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6E45B54B1ABBE04600F3161F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6E45B54C1ABBE04600F3161F /* KVCUtils.h */,
+				6E45B54D1ABBE04600F3161F /* KVCUtils.m */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E45B5501ABBE1A500F3161F /* MainVC.xib in Resources */,
 				6E45B53F1ABBD6CB00F3161F /* LaunchScreen.xib in Resources */,
 				6E45B53D1ABBD63200F3161F /* Images.xcassets in Resources */,
 			);
@@ -163,6 +193,8 @@
 				6E45B5431ABBD6FA00F3161F /* MainVC.m in Sources */,
 				6E45B51B1ABBD5A900F3161F /* AppDelegate.m in Sources */,
 				6E45B5181ABBD5A900F3161F /* main.m in Sources */,
+				6E45B54E1ABBE04600F3161F /* KVCUtils.m in Sources */,
+				6E45B5471ABBDE7700F3161F /* BLEHRMController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +235,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -239,7 +271,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
