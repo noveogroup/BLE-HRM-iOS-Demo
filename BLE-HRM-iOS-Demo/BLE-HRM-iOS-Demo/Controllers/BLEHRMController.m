@@ -40,6 +40,15 @@ static NSString *const bleHRMValueCharacteristicId = @"0x2A37";
     return self;
 }
 
+#pragma mark - Private methods
+
+- (void)startScanning
+{
+    [self.btManager scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:bleHRMServiceId]]
+        options:nil];
+}
+
+
 #pragma mark - BT manager callbacks
 
 - (void)centralManager:(CBCentralManager *)central willRestoreState:(NSDictionary *)dict
@@ -51,8 +60,7 @@ static NSString *const bleHRMValueCharacteristicId = @"0x2A37";
 {
     if (central.state == CBCentralManagerStatePoweredOn) {
         NSLog(@"Central manager state is 'powered on'.");
-        [central scanForPeripheralsWithServices:@[[CBUUID UUIDWithString:bleHRMServiceId]]
-            options:nil];
+        [self startScanning];
     }
     else {
         self.heartRate = -1;
@@ -76,12 +84,22 @@ static NSString *const bleHRMValueCharacteristicId = @"0x2A37";
 {
     NSLog(@"Error while connecting peripheral: %@.", error);
     self.heartRate = -1;
+    self.connectingPeripheral = nil;
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
     NSLog(@"Connected peripheral %@.", peripheral);
     [peripheral discoverServices:@[[CBUUID UUIDWithString:bleHRMServiceId]]];
+}
+
+- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:
+    (CBPeripheral *)peripheral error:(NSError *)error
+{
+    NSLog(@"Disconnected peripheral %@.", peripheral);
+    self.connectingPeripheral = nil;
+    self.heartRate = -1;
+    [self startScanning];
 }
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
