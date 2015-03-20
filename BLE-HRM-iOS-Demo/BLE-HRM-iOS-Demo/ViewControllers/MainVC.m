@@ -72,7 +72,15 @@ static void *const kvoContext = (void *)&kvoContext;
 
 - (void)refreshHRValueLabel
 {
-    self.hrValueLabel.text = [NSString stringWithFormat:@"%ld", (long)self.hrmController.heartRate];
+    // Show a hint when no value available.
+    if (self.hrmController.heartRate < 0) {
+        self.hrValueLabel.text = NSLocalizedString(@"NoHRValueHint",);
+    }
+    
+    // Normal case, show HR value.
+    else {
+        self.hrValueLabel.text = [NSString stringWithFormat:@"%ld", (long)self.hrmController.heartRate];
+    }
 }
 
 @end

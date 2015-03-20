@@ -15,6 +15,7 @@
 		6E45B5471ABBDE7700F3161F /* BLEHRMController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E45B5461ABBDE7700F3161F /* BLEHRMController.m */; };
 		6E45B54E1ABBE04600F3161F /* KVCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E45B54D1ABBE04600F3161F /* KVCUtils.m */; };
 		6E45B5501ABBE1A500F3161F /* MainVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E45B54F1ABBE1A500F3161F /* MainVC.xib */; };
+		6E45B5521ABBE50700F3161F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E45B5511ABBE50700F3161F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		6E45B54C1ABBE04600F3161F /* KVCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVCUtils.h; sourceTree = "<group>"; };
 		6E45B54D1ABBE04600F3161F /* KVCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVCUtils.m; sourceTree = "<group>"; };
 		6E45B54F1ABBE1A500F3161F /* MainVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainVC.xib; path = ViewControllers/MainVC.xib; sourceTree = "<group>"; };
+		6E45B5511ABBE50700F3161F /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		6E45B53B1ABBD61600F3161F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6E45B5511ABBE50700F3161F /* Localizable.strings */,
 				6E45B53E1ABBD6CB00F3161F /* LaunchScreen.xib */,
 				6E45B53C1ABBD63200F3161F /* Images.xcassets */,
 			);
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E45B5501ABBE1A500F3161F /* MainVC.xib in Resources */,
+				6E45B5521ABBE50700F3161F /* Localizable.strings in Resources */,
 				6E45B53F1ABBD6CB00F3161F /* LaunchScreen.xib in Resources */,
 				6E45B53D1ABBD63200F3161F /* Images.xcassets in Resources */,
 			);
