@@ -13,11 +13,17 @@
 
 
 static void *const kvoContext = (void *)&kvoContext;
+static NSInteger const heartAnimationFPS = 20;
+static NSTimeInterval const animationDurationForward = 0.3;
+static NSTimeInterval const animationDurationBackward = 0.1;
 
 
 @interface MainVC ()
 @property (nonatomic) BLEHRMController *hrmController;
 @property (nonatomic) IBOutlet UILabel *hrValueLabel;
+@property (nonatomic) IBOutlet UILabel *heartLabel;
+@property (nonatomic) NSInteger skippedFrames;
+@property (nonatomic) NSTimer *heartTimer;
 @end
 
 
@@ -40,12 +46,20 @@ static void *const kvoContext = (void *)&kvoContext;
 - (void)dealloc
 {
     [_hrmController removeObserver:self forKeyPath:STR_PROP(heartRate) context:kvoContext];
+    [_heartTimer invalidate];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.heartLabel.alpha = 0;
+    self.heartLabel.text = @"❤\U0000FE0E";
+    
     [self refreshHRValueLabel];
+    
+    self.heartTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/heartAnimationFPS target:self
+        selector:@selector(heartAnimationTick:) userInfo:nil repeats:YES];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -54,6 +68,45 @@ static void *const kvoContext = (void *)&kvoContext;
 }
 
 #pragma mark - Private methods
+
+- (void)heartAnimationTick:(NSTimer *)sender
+{
+    NSInteger bpmHeartRate = self.hrmController.heartRate;
+
+    // HR value is not available, no animation needed.
+    if (bpmHeartRate < 0) {
+        return;
+    }
+    
+    float bpsHeartRate = (float)bpmHeartRate / 60.0f;
+    NSInteger framesToSkip =  heartAnimationFPS / bpsHeartRate;
+    
+    // Wait for animation.
+    if (self.skippedFrames < framesToSkip) {
+        self.skippedFrames += 1;
+    }
+    
+    // Time to start heart animation.
+    else {
+        self.skippedFrames = 0;
+        [self animateHeart];
+    }
+}
+
+- (void)animateHeart
+{
+    self.heartLabel.transform = CGAffineTransformMakeScale(0, 0);
+    self.heartLabel.alpha = 1;
+    [UIView animateWithDuration:animationDurationForward delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5
+        options:0 animations:^{
+            self.heartLabel.transform = CGAffineTransformMakeScale(1, 1);
+        }
+        completion:^(BOOL finished) {
+            [UIView animateWithDuration:animationDurationBackward animations:^{
+                    self.heartLabel.alpha = 0;
+                }];
+        }];
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change
     context:(void *)context
